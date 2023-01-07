@@ -7,6 +7,8 @@
    <div class="row row-cols-1 row-cols-md-3 g-4">
     @foreach (var pie in Model.Pies)
     {
+        <partial name="_PieCard" model="pie" />
+@*
         <div class="col">
             <div class="card pie-card">
                 <img src="@pie.ImageThumbnailUrl" class="card-img-top" alt="@pie.Name">
@@ -28,5 +30,6 @@
                 </div>
             </div>
         </div>
+*@
     } 
 </div> 

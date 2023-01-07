@@ -7,7 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container. 
 builder.Services.AddScoped<ICategoryRepository, MockCategoryRepository>();
-builder.Services.AddScoped<IPieRepository, MockPieRepository>();
+//builder.Services.AddScoped<IPieRepository, MockPieRepository>();
+builder.Services.AddScoped<IPieRepository, PieRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<PieShopDbContext>(options => {

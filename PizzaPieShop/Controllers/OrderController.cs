@@ -36,6 +36,10 @@ namespace PizzaPieShop.Controllers
             }
             return View(order);
         }
-
+        public IActionResult CheckoutComplete()
+        {
+            ViewBag.CheckoutCompleteMessage = "Thanks for your order. You'll soon enjoy our delicious pies!";
+            return View();
+        }
     }
 }

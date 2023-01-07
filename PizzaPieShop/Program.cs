@@ -30,7 +30,7 @@ if (!app.Environment.IsDevelopment())
     // app.UseHsts();
 }
 
-app.MapDefaultControllerRoute();
+app.MapDefaultControllerRoute();//{controller=Home}/{action=Index}/{id?}
 
 //app.UseRouting();
 //app.MapGet("/", () => "Hello World!");

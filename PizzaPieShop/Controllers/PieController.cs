@@ -24,5 +24,14 @@ namespace PizzaPieShop.Controllers
             PieListViewModel piesListViewModel = new PieListViewModel(_pieRepository.AllPies, "Cheese cakes");
             return View(piesListViewModel);
         }
+        public IActionResult Details(int id) //https://localhost:7188/pie/Details/7
+        {
+            var pie= _pieRepository.GetPieById(id);
+            if ( pie==null)
+            {
+                return NotFound();
+            }
+            return View (pie);
+        }
     }
 }

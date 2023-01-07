@@ -1,3 +1,4 @@
+using BethanysPieShop.Models;
 using Microsoft.EntityFrameworkCore;
 using PizzaPieShop.IRepositories;
 using PizzaPieShop.Models;
@@ -11,6 +12,9 @@ builder.Services.AddScoped<ICategoryRepository, MockCategoryRepository>();
 //builder.Services.AddScoped<IPieRepository, MockPieRepository>();
 builder.Services.AddScoped<IPieRepository, PieRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IShoppingCart, ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<PieShopDbContext>(options =>
@@ -29,11 +33,15 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     // app.UseHsts();
 }
-
-app.MapDefaultControllerRoute();//{controller=Home}/{action=Index}/{id?}
+app.UseStaticFiles();
+app.UseSession();
+//app.MapDefaultControllerRoute();//{controller=Home}/{action=Index}/{id?}
 
 //app.UseRouting();
 //app.MapGet("/", () => "Hello World!");
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 // to seed data 
 DbInitializer.Seed(app);

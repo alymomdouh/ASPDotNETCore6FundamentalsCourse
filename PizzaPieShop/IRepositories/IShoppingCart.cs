@@ -1,4 +1,6 @@
-﻿namespace BethanysPieShop.Models
+﻿using PizzaPieShop.Models;
+
+namespace BethanysPieShop.Models
 {
     public interface IShoppingCart
     {

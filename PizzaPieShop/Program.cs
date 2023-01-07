@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PizzaPieShop.IRepositories;
 using PizzaPieShop.Models;
 using PizzaPieShop.Repositories;
+using PizzaPieShop.Seeder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,8 @@ builder.Services.AddScoped<IPieRepository, PieRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<PieShopDbContext>(options => {
+builder.Services.AddDbContext<PieShopDbContext>(options =>
+{
     options.UseSqlServer(
         builder.Configuration["ConnectionStrings:Default"]);
 });
@@ -25,12 +27,15 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-   // app.UseHsts();
+    // app.UseHsts();
 }
 
 app.MapDefaultControllerRoute();
 
 //app.UseRouting();
 //app.MapGet("/", () => "Hello World!");
+
+// to seed data 
+DbInitializer.Seed(app);
 
 app.Run();

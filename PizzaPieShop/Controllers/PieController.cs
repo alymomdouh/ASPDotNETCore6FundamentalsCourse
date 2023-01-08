@@ -2,6 +2,7 @@
 using PizzaPieShop.IRepositories;
 using PizzaPieShop.Models;
 using PizzaPieShop.ViewModels;
+using System.IO.Pipelines;
 
 namespace PizzaPieShop.Controllers
 {
@@ -50,5 +51,10 @@ namespace PizzaPieShop.Controllers
             }
             return View (pie);
         }
+        public IActionResult Search()
+        {
+            return View();
+        }
     }
+    
 }

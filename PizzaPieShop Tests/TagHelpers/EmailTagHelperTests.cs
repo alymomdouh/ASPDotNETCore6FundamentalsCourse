@@ -1,5 +1,4 @@
-﻿using BethanysPieShop.TagHelpers;
-using Microsoft.AspNetCore.Razor.TagHelpers;
+﻿ using Microsoft.AspNetCore.Razor.TagHelpers;
 using Moq;
 using PizzaPieShop.TagHelpers;
 using System;

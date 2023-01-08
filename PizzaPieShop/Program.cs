@@ -25,7 +25,8 @@ builder.Services.AddDbContext<PieShopDbContext>(options =>
 });
 //this for inject restfull api 
 //builder.Services.AddControllers();
-
+//enable  Blazor pages 
+builder.Services.AddServerSideBlazor();
 var app = builder.Build();
 app.UseStaticFiles();
 

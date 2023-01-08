@@ -1,6 +1,7 @@
-﻿using BethanysPieShop.Controllers;
-using BethanysPieShop.ViewModels;
-using BethanysPieShopTests.Mocks;
+﻿using PizzaPieShop.Controllers;
+using PizzaPieShop.ViewModels;
+using PizzaPieShop_Tests.Controllers;
+ using PizzaPieShop_Tests.Mocks;
 using System.Linq;
 using Xunit;
 

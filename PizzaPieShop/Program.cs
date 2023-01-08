@@ -23,6 +23,8 @@ builder.Services.AddDbContext<PieShopDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration["ConnectionStrings:Default"]);
 });
+//this for inject restfull api 
+//builder.Services.AddControllers();
 
 var app = builder.Build();
 app.UseStaticFiles();

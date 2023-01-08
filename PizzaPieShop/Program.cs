@@ -47,6 +47,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+app.MapBlazorHub();
+app.MapFallbackToPage("/app/{*catchall}", "/App/Index");
 // to seed data 
 DbInitializer.Seed(app);
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PizzaPieShop.IRepositories;
 using PizzaPieShop.Models;
+using System.Xml.Linq;
 
 namespace PizzaPieShop.Repositories
 {
@@ -15,7 +16,29 @@ namespace PizzaPieShop.Repositories
         {
             get
             {
-                return context.Pies.Include(c => c.Category);
+                return context.Pies.Include(c => c.Category)
+                                    .Select(x => new Pie 
+                                            { 
+                                                Name=x.Name,
+                                                PieId=x.PieId,
+                                                InStock=x.InStock,
+                                                CategoryId=x.CategoryId,
+                                                ImageUrl=x.ImageUrl,
+                                                ImageThumbnailUrl=x.ImageThumbnailUrl,
+                                                IsPieOfTheWeek=x.IsPieOfTheWeek,
+                                                Price=x.Price,
+                                                LongDescription=x.LongDescription,
+                                                ShortDescription=x.ShortDescription,
+                                                AllergyInformation=x.AllergyInformation,
+                                                Category= 
+                                                new Category 
+                                                    {
+                                                       CategoryName= x.Category.CategoryName,
+                                                       CategoryId=x.Category.CategoryId ,
+                                                       Description=x.Category.Description  
+                                                    }
+                                    }).AsEnumerable<Pie>();
+
             }
         } 
         public IEnumerable<Pie> PiesOfTheWeek

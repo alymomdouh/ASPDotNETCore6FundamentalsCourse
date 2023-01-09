@@ -1,9 +1,11 @@
 ﻿using BethanysPieShop.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace PizzaPieShop.Models
 {
-    public class PieShopDbContext : DbContext
+    //public class PieShopDbContext : DbContext
+    public class PieShopDbContext : IdentityDbContext
     {
         public PieShopDbContext(DbContextOptions<PieShopDbContext> options) : base(options)
         {

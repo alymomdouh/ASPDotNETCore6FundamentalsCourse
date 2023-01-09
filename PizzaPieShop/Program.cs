@@ -4,8 +4,10 @@ using PizzaPieShop.IRepositories;
 using PizzaPieShop.Models;
 using PizzaPieShop.Repositories;
 using PizzaPieShop.Seeder;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("PieShopDbContextConnection") ?? throw new InvalidOperationException("Connection string 'PieShopDbContextConnection' not found.");
 
 // Add services to the container. 
 builder.Services.AddScoped<ICategoryRepository, MockCategoryRepository>();
@@ -23,6 +25,9 @@ builder.Services.AddDbContext<PieShopDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration["ConnectionStrings:Default"]);
 });
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<PieShopDbContext>();
 //this for inject restfull api 
 //builder.Services.AddControllers();
 //enable  Blazor pages 

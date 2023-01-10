@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33209.295
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaPieShop", "PizzaPieShop\PizzaPieShop.csproj", "{C330962F-6D64-49CC-9577-549F3358AA68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaPieShop Tests", "PizzaPieShop Tests\PizzaPieShop Tests.csproj", "{FC08E66E-EAC9-41A7-99F2-A0A1D2ACF648}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaPieShop Tests", "PizzaPieShop Tests\PizzaPieShop Tests.csproj", "{FC08E66E-EAC9-41A7-99F2-A0A1D2ACF648}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,13 +1,13 @@
 using BethanysPieShop.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PizzaPieShop.IRepositories;
 using PizzaPieShop.Models;
 using PizzaPieShop.Repositories;
 using PizzaPieShop.Seeder;
-using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("PieShopDbContextConnection") ?? throw new InvalidOperationException("Connection string 'PieShopDbContextConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("Default") ?? throw new InvalidOperationException("Connection string 'PieShopDbContextConnection' not found.");
 
 // Add services to the container. 
 builder.Services.AddScoped<ICategoryRepository, MockCategoryRepository>();
@@ -26,8 +26,9 @@ builder.Services.AddDbContext<PieShopDbContext>(options =>
         builder.Configuration["ConnectionStrings:Default"]);
 });
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<PieShopDbContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>(
+    options => options.SignIn.RequireConfirmedAccount = false
+    ).AddEntityFrameworkStores<PieShopDbContext>();
 //this for inject restfull api 
 //builder.Services.AddControllers();
 //enable  Blazor pages 
@@ -45,6 +46,7 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseSession();
 app.UseAuthentication();
+app.UseAuthorization();
 //app.MapDefaultControllerRoute();//{controller=Home}/{action=Index}/{id?}
 
 //app.UseRouting();

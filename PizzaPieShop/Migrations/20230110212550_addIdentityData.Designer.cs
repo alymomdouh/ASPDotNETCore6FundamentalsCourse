@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PizzaPieShop.Models;
 
@@ -11,9 +12,10 @@ using PizzaPieShop.Models;
 namespace PizzaPieShop.Migrations
 {
     [DbContext(typeof(PieShopDbContext))]
-    partial class PieShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230110212550_addIdentityData")]
+    partial class addIdentityData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
